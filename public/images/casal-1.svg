@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none">
+  <rect width="640" height="420" fill="#2A1117"/>
+  <circle cx="120" cy="86" r="96" fill="#7F1D1D" opacity="0.6"/>
+  <circle cx="520" cy="330" r="130" fill="#DC2626" opacity="0.25"/>
+  <rect x="68" y="52" width="504" height="316" rx="24" fill="#3B1A20" stroke="#F87171" stroke-opacity="0.35"/>
+  <circle cx="248" cy="176" r="34" fill="#FEE2E2"/>
+  <circle cx="328" cy="172" r="34" fill="#FECACA"/>
+  <path d="M192 322C214 258 252 230 288 230C324 230 364 258 386 322" fill="#FCA5A5"/>
+  <path d="M257 204C268 198 279 198 289 204" stroke="#991B1B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M337 200C347 195 357 195 366 200" stroke="#991B1B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M311 144C319 126 339 124 347 140C354 154 343 168 322 184C302 168 291 153 297 140C305 124 324 125 331 141" fill="#FDE68A"/>
+  <text x="320" y="355" text-anchor="middle" fill="#FCA5A5" font-family="Arial, sans-serif" font-size="22" font-weight="700">PRIMEIRO ENCONTRO</text>
+</svg>

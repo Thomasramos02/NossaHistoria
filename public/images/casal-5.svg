@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none">
+  <rect width="640" height="420" fill="#2A1117"/>
+  <circle cx="108" cy="100" r="118" fill="#7F1D1D" opacity="0.55"/>
+  <circle cx="536" cy="326" r="136" fill="#F97316" opacity="0.24"/>
+  <rect x="60" y="44" width="520" height="332" rx="28" fill="#3A1C24" stroke="#FCA5A5" stroke-opacity="0.4"/>
+  <path d="M138 280C180 212 250 176 320 176C390 176 460 212 502 280" stroke="#FCD34D" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="248" cy="160" r="30" fill="#FDE68A"/>
+  <circle cx="332" cy="154" r="30" fill="#FECACA"/>
+  <path d="M194 320C218 252 254 224 291 224C328 224 362 252 388 320" fill="#FDB4C0"/>
+  <path d="M278 120C286 102 308 100 316 118C323 131 314 147 294 162C274 147 266 130 272 118C278 104 296 102 304 118" fill="#FFF7ED"/>
+  <path d="M338 118C346 100 368 98 376 116C383 129 374 145 354 160C334 145 326 128 332 116C338 102 356 100 364 116" fill="#FFF7ED"/>
+  <text x="320" y="356" text-anchor="middle" fill="#FED7AA" font-family="Arial, sans-serif" font-size="21" font-weight="700">COMPARTILHEM</text>
+</svg>
