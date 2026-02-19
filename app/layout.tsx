@@ -7,9 +7,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'NossaHistória — A Timeline do Seu Amor',
+  title: 'NossaHistória — Retrospectiva do Seu Relacionamento',
   description:
-    'Crie, compartilhe e reviva os momentos especiais do casal em uma timeline interativa e romântica. Gratuito para sempre.',
+    'Crie uma retrospectiva digital com narrativa guiada e revele a surpresa no aniversário de namoro.',
 }
 
 export const viewport: Viewport = {

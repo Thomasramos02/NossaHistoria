@@ -56,8 +56,8 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-[#A1A1AA]">
-              Plataforma para casais criarem, organizarem e compartilharem sua
-              história em uma timeline elegante e segura.
+              Plataforma para criar uma retrospectiva digital do relacionamento
+              e revelar uma surpresa no aniversário de namoro.
             </p>
 
             <div className="mt-6 flex gap-2">
@@ -181,7 +181,7 @@ export function Footer() {
             &copy; 2026 {landingCopy.brandName}. Todos os direitos reservados.
           </p>
           <p className="text-xs text-[#71717A]">
-            Feito para casais que querem guardar cada fase da história.
+            Feito para transformar memórias em surpresa.
           </p>
         </div>
       </div>

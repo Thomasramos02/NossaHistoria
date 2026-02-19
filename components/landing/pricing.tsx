@@ -2,48 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { AlertTriangle, Check, Crown, Heart } from "lucide-react";
+import { Check, Crown, Sparkles, Infinity } from "lucide-react";
 import { landingCopy } from "@/lib/landing-copy";
 import { useWaitlist } from "@/components/landing/waitlist-provider";
 
-type PlanFeature = {
-  text: string;
-  type: "ok" | "warn";
-};
-
-type Plan = {
-  name: string;
-  icon: typeof Heart;
-  description: string;
-  features: PlanFeature[];
-  cta: string;
-  highlighted: boolean;
-  badge?: string;
-};
-
-const plans: Plan[] = [
-  {
-    name: "Timeline",
-    icon: Crown,
-    description:
-      "Crie e preserve toda a história do seu amor em uma timeline linda e organizada. Pagamento único, acesso vitalício.",
-    badge: "Vitalício",
-    features: [
-      { text: "Momentos ilimitados", type: "ok" },
-      { text: "Até 10 fotos por momento", type: "ok" },
-      { text: "Marcos especiais com destaque", type: "ok" },
-      { text: "Timeline horizontal interativa", type: "ok" },
-      { text: "Compartilhamento público ou privado", type: "ok" },
-      { text: "Link privado vitalício", type: "ok" },
-      { text: "QR Code de acesso personalizado", type: "ok" },
-      { text: "Adicionar fotos a qualquer momento", type: "ok" },
-      { text: "Contador de dias juntos", type: "ok" },
-      { text: "Sem marca d'água", type: "ok" },
-      { text: "Suporte por email", type: "ok" },
-    ],
-    cta: "Criar Minha Timeline - R$ 49,90",
-    highlighted: true,
-  },
+const features = [
+  "Roteiro guiado com perguntas por fase",
+  "Capítulos e marcos com destaque",
+  "Modo surpresa com contagem regressiva",
+  "Revelação programada na data escolhida",
+  "Carta final personalizada",
+  "Até 10 fotos por momento",
+  "Link secreto + QR Code para entregar",
+  "Compartilhamento privado ou com senha",
+  "Prévia antes do grande dia",
+  "Edição a qualquer momento",
+  "Sem marca d'água",
+  "Suporte por email",
 ];
 
 export function Pricing() {
@@ -59,16 +34,14 @@ export function Pricing() {
       },
       { threshold: 0.15 },
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const handlePlanCTA = () => {
+  const handleCTA = () => {
     const checkoutTarget = document.querySelector<HTMLElement>(
       landingCopy.checkoutAnchor,
     );
-
     if (checkoutTarget) {
       checkoutTarget.scrollIntoView({
         behavior: prefersReducedMotion ? "auto" : "smooth",
@@ -76,7 +49,6 @@ export function Pricing() {
       });
       return;
     }
-
     openWaitlist();
   };
 
@@ -86,132 +58,132 @@ export function Pricing() {
       id="preços"
       className="relative isolate overflow-hidden py-16 sm:py-24 lg:py-32"
     >
+      {/* Background glows */}
       <div className="pointer-events-none absolute -left-24 top-10 -z-10 h-72 w-72 rounded-full bg-[#EF4444]/10 blur-[110px]" />
       <div className="pointer-events-none absolute right-8 top-24 -z-10 h-56 w-56 rounded-full bg-[#EF4444]/12 blur-[120px]" />
       <div className="pointer-events-none absolute -right-24 bottom-10 -z-10 h-80 w-80 rounded-full bg-[#EF4444]/9 blur-[130px]" />
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <h2 className="text-balance text-center text-2xl font-bold text-[#FAFAFA] sm:text-3xl md:text-4xl lg:text-5xl">
-          Escolha seu plano
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-[#A1A1AA] sm:mt-4 sm:text-base">
-          {landingCopy.valueProposition}
-        </p>
+      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+        {/* Section header */}
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#EF4444]">
+            Preço
+          </p>
+          <h2 className="text-balance text-2xl font-bold text-[#FAFAFA] sm:text-3xl md:text-4xl">
+            Um presente que dura para sempre
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm text-[#71717A]">
+            Pagamento único. Sem mensalidade. Acesso vitalício.
+          </p>
+        </div>
 
-        <div className="mt-10 flex justify-center sm:mt-16">
-          {plans.map((plan, i) => {
-            return (
-              <div
-                key={plan.name}
-                className={`relative w-full max-w-xl rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[#262626] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-7 ${
-                  plan.highlighted ? "ring-1 ring-[#EF4444]/40" : ""
-                } ${
-                  visible
-                    ? prefersReducedMotion
-                      ? ""
-                      : "animate-fade-up"
-                    : "opacity-0"
-                }`}
-                style={{
-                  animationDelay: prefersReducedMotion ? "0s" : `${i * 0.15}s`,
-                  ...(plan.highlighted
-                    ? { transform: "translateY(-8px)" }
-                    : {}),
-                }}
-              >
-                <div className="mb-5 flex items-center gap-3">
-                  <plan.icon
-                    className={`h-6 w-6 ${
-                      plan.highlighted ? "text-white" : "text-[#EF4444]"
-                    }`}
-                  />
-                  <h3
-                    className={`text-lg font-bold ${
-                      plan.highlighted ? "text-white" : "text-[#FAFAFA]"
-                    }`}
-                  >
-                    {plan.name}
+        {/* Card */}
+        <div
+          className={`relative overflow-hidden rounded-2xl border border-[rgba(239,68,68,0.25)] bg-[#1C1C1C] transition-all duration-700 ${
+            visible && !prefersReducedMotion
+              ? "translate-y-0 opacity-100"
+              : prefersReducedMotion
+                ? ""
+                : "translate-y-8 opacity-0"
+          }`}
+        >
+          {/* Top accent line */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#EF4444] to-transparent" />
+
+          {/* Card inner */}
+          <div className="p-7 sm:p-9">
+            {/* Header row */}
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EF4444]/10 ring-1 ring-[#EF4444]/20">
+                  <Crown className="h-5 w-5 text-[#EF4444]" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#FAFAFA]">
+                    Retrospectiva
                   </h3>
+                  <p className="text-xs text-[#71717A]">Acesso completo</p>
                 </div>
-
-                <div className="mb-2">
-                  <span
-                    className={`text-3xl font-extrabold ${
-                      plan.highlighted ? "text-white" : "text-[#FAFAFA]"
-                    }`}
-                  >
-                    R$ 49,90
-                  </span>
-                  <span
-                    className={`ml-1.5 text-sm ${
-                      plan.highlighted ? "text-white/80" : "text-[#52525B]"
-                    }`}
-                  >
-                    {" "}
-                    pagamento único
-                  </span>
-                </div>
-
-                <p
-                  className={`mb-4 text-xs font-semibold uppercase tracking-[0.1em] ${
-                    plan.highlighted ? "text-white/80" : "text-[#F87171]"
-                  }`}
-                >
-                  Vitalício
-                </p>
-
-                <p
-                  className={`mb-6 text-sm leading-relaxed ${
-                    plan.highlighted ? "text-white/80" : "text-[#A1A1AA]"
-                  }`}
-                >
-                  {plan.description}
-                </p>
-
-                <ul className="mb-7 grid gap-2.5 sm:grid-cols-2">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature.text}
-                      className="flex items-center gap-2.5"
-                    >
-                      {feature.type === "ok" ? (
-                        <Check
-                          className={`h-4 w-4 shrink-0 ${
-                            plan.highlighted ? "text-white" : "text-[#EF4444]"
-                          }`}
-                        />
-                      ) : (
-                        <AlertTriangle className="h-4 w-4 shrink-0 text-amber-300" />
-                      )}
-                      <span
-                        className={`text-sm ${
-                          plan.highlighted ? "text-white/90" : "text-[#A1A1AA]"
-                        }`}
-                      >
-                        {feature.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  type="button"
-                  onClick={handlePlanCTA}
-                  aria-label={`Selecionar plano ${plan.name}`}
-                  className={`w-full rounded-xl py-3.5 text-sm font-semibold transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] ${
-                    plan.highlighted
-                      ? "bg-white text-[#EF4444] shadow-lg hover:bg-[#FAFAFA]"
-                      : "border border-[#EF4444] bg-transparent text-[#EF4444] hover:bg-[#EF4444]/10"
-                  }`}
-                >
-                  {plan.cta}
-                </button>
               </div>
-            );
-          })}
+
+              {/* Badge */}
+              <span className="flex items-center gap-1.5 rounded-full bg-[#EF4444]/10 px-3 py-1 text-xs font-semibold text-[#EF4444] ring-1 ring-[#EF4444]/20">
+                <Infinity className="h-3 w-3" />
+                Vitalício
+              </span>
+            </div>
+
+            {/* Divider */}
+            <div className="my-6 h-px bg-[rgba(255,255,255,0.06)]" />
+
+            {/* Price */}
+            <div className="flex items-end gap-3">
+              <div>
+                <div className="flex items-start gap-1">
+                  <span className="mt-1.5 text-sm font-medium text-[#71717A]">
+                    R$
+                  </span>
+                  <span className="text-5xl font-extrabold tracking-tight text-[#FAFAFA]">
+                    49
+                  </span>
+                  <span className="mt-2 text-2xl font-bold text-[#FAFAFA]">
+                    ,90
+                  </span>
+                </div>
+                <p className="mt-1 text-xs text-[#52525B]">
+                  pagamento único · sem renovação
+                </p>
+              </div>
+
+              {/* Launch offer pill */}
+              <div className="mb-5 ml-auto flex items-center gap-1.5 rounded-lg bg-[#EF4444]/8 px-3 py-1.5 ring-1 ring-[#EF4444]/15">
+                <Sparkles className="h-3 w-3 text-[#EF4444]" />
+                <span className="text-xs font-medium text-[#EF4444]">
+                  Oferta de lançamento
+                </span>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="my-6 h-px bg-[rgba(255,255,255,0.06)]" />
+
+            {/* Features grid */}
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {features.map((feature) => (
+                <li key={feature} className="flex items-center gap-2.5">
+                  <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#EF4444]/12">
+                    <Check className="h-2.5 w-2.5 text-[#EF4444]" />
+                  </div>
+                  <span className="text-sm text-[#A1A1AA]">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Divider */}
+            <div className="my-7 h-px bg-[rgba(255,255,255,0.06)]" />
+
+            {/* CTA */}
+            <button
+              type="button"
+              onClick={handleCTA}
+              className="group relative w-full overflow-hidden rounded-xl bg-[#EF4444] py-4 text-sm font-bold text-white shadow-lg shadow-[#EF4444]/20 transition-all hover:bg-[#DC2626] hover:shadow-[#EF4444]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1C1C1C]"
+            >
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              <span className="relative">
+                Criar minha retrospectiva — R$ 49,90
+              </span>
+            </button>
+
+            <p className="mt-3 text-center text-xs text-[#52525B]">
+              💳 Cartão, Pix ou boleto · 🔒 Pagamento seguro
+            </p>
+          </div>
+
+          {/* Bottom accent */}
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.06)] to-transparent" />
         </div>
       </div>
-
     </section>
   );
 }

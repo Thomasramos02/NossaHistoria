@@ -28,7 +28,7 @@ export function FinalCTA() {
         />
 
         <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl text-balance">
-          Comece a Construir Sua História Hoje
+          Prepare a surpresa que vai marcar o aniversário de namoro
         </h2>
 
         <p className="mx-auto mt-5 max-w-lg text-lg text-white/80">
@@ -45,7 +45,7 @@ export function FinalCTA() {
         </button>
 
         <p className="mt-5 text-sm text-white/60">
-          Junte-se a centenas de casais
+          Junte-se a casais preparando a surpresa
         </p>
       </div>
     </section>

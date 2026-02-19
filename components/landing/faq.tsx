@@ -10,34 +10,34 @@ import {
 
 const faqs = [
   {
+    question: "Como funciona o modo surpresa?",
+    answer:
+      "Você define a data do aniversário. Até lá, a retrospectiva fica privada com contagem regressiva. No dia, você libera o link ou o QR Code para a revelação.",
+  },
+  {
+    question: "Posso editar a retrospectiva depois de pronta?",
+    answer:
+      "Sim. Você pode ajustar fotos, textos e capítulos sempre que quiser; tudo é atualizado imediatamente.",
+  },
+  {
+    question: "Preciso do e-mail do meu parceiro(a)?",
+    answer:
+      "Não. Você monta a surpresa e entrega com link secreto ou QR Code.",
+  },
+  {
+    question: "Quanto tempo leva para montar?",
+    answer:
+      "Com o roteiro guiado, dá para montar em 15–30 minutos. Você pode salvar e continuar depois.",
+  },
+  {
     question: "Como funciona o pagamento único?",
     answer:
-      "Você paga R$ 49,90 uma única vez e tem acesso vitalício à sua timeline. Sem mensalidades, sem surpresas. Crie momentos ilimitados e preserve suas memórias para sempre.",
+      "Você paga R$ 49,90 uma única vez e tem acesso vitalício à sua retrospectiva. Sem mensalidades.",
   },
   {
-    question: "Como garanto que não vou perder o acesso?",
+    question: "A retrospectiva é privada?",
     answer:
-      "Ao criar sua timeline, você recebe um QR Code exclusivo e um link privado por email. Salve o QR Code, adicione o link aos favoritos ou guarde o email. Se perder, é só recuperar pelo email cadastrado.",
-  },
-  {
-    question: "Posso compartilhar minha timeline?",
-    answer:
-      "Sim! Você pode gerar um link de compartilhamento público ou protegido por senha. Escolha quem pode ver sua história ou mantenha totalmente privada.",
-  },
-  {
-    question: "Quantas fotos posso adicionar?",
-    answer:
-      "Você pode criar momentos ilimitados e adicionar até 10 fotos em cada momento. O sistema comprime automaticamente as imagens mantendo a qualidade visual.",
-  },
-  {
-    question: "Meus dados são seguros?",
-    answer:
-      "Absolutamente. Suas fotos são armazenadas com criptografia, seu link é único e privado, e nunca compartilhamos seus dados com terceiros.",
-  },
-  {
-    question: "Funciona no celular?",
-    answer:
-      "Sim! A timeline funciona perfeitamente em smartphones, tablets e computadores. Acesse de qualquer dispositivo, a qualquer hora.",
+      "Sim. Você escolhe entre link privado, senha e liberação no dia. Seus dados ficam protegidos.",
   },
 ];
 
@@ -71,7 +71,7 @@ export function FAQ() {
           Perguntas Frequentes
         </h2>
         <p className="mx-auto mt-3 max-w-md text-center text-sm text-[#A1A1AA] sm:mt-4 sm:text-base">
-          Tire suas dúvidas sobre a Timeline do Casal
+          Tire suas dúvidas sobre a retrospectiva digital
         </p>
 
         <div className={`mt-12 ${visible ? "animate-fade-up" : "opacity-0"}`}>

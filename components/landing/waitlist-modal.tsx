@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import { useReward } from "partycles";
 
 type WaitlistModalProps = {
   open: boolean;
@@ -12,11 +13,24 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
   const [emailError, setEmailError] = useState("");
   const [leadCaptured, setLeadCaptured] = useState(false);
 
+  const [rewardFired, setRewardFired] = useState(false);
+  // Adicione esse:
+  const { reward: submitReward } = useReward("submit-btn", "hearts", {
+    particleCount: 20,
+    spread: 80,
+    elementSize: 20,
+    startVelocity: 20,
+    lifetime: 200,
+    decay: 0.92,
+    effects: { pulse: true },
+  });
+
   useEffect(() => {
     if (!open) {
       setLeadEmail("");
       setEmailError("");
       setLeadCaptured(false);
+      setRewardFired(false);
     }
   }, [open]);
 
@@ -45,9 +59,16 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
         setEmailError("Não foi possível salvar. Tente novamente.");
         return;
       }
-
       setEmailError("");
-      setLeadCaptured(true);
+      if (!rewardFired) {
+        submitReward();
+        setRewardFired(true);
+        setTimeout(() => {
+          (setLeadCaptured(true), 800);
+        });
+      } else {
+        setLeadCaptured(true);
+      }
     } catch {
       setEmailError("Não foi possível salvar. Tente novamente.");
     }
@@ -67,17 +88,18 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
           🎉 Estamos quase lá!
         </h3>
         <p className="mt-2 text-sm text-[#A1A1AA]">
-          A Timeline está em preparação final. Deixe seu e-mail e seja um dos
-          primeiros a criar a timeline do seu amor quando lançarmos.
+          A retrospectiva digital está em preparação final. Deixe seu e-mail
+          para ser um dos primeiros a criar a surpresa do aniversário.
         </p>
 
         {leadCaptured ? (
-          <div className="mt-4 space-y-2">
+          <div id="waitlist-success" className="mt-4 space-y-2">
             <p className="rounded-lg border border-green-500/30 bg-green-500/10 px-3 py-2 text-sm text-green-300">
               ✅ Cadastro realizado com sucesso!
             </p>
             <p className="text-xs text-[#A1A1AA]">
-              Você receberá um email assim que a Timeline estiver disponível.
+              Você receberá um email assim que a retrospectiva estiver
+              disponível.
             </p>
           </div>
         ) : (
@@ -104,6 +126,7 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
             {emailError && <p className="text-xs text-red-400">{emailError}</p>}
 
             <button
+              id="submit-btn"
               type="submit"
               className="w-full rounded-lg bg-[#EF4444] px-4 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#DC2626] hover:shadow-lg hover:shadow-[#EF4444]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A]"
             >

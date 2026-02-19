@@ -45,13 +45,13 @@ export function Hero() {
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#EF4444]/20 bg-[#EF4444]/10 px-3 py-1 sm:mb-6 sm:px-4 sm:py-1.5">
             <Heart className="h-3 w-3 text-[#EF4444] sm:h-3.5 sm:w-3.5" />
             <span className="text-xs font-medium text-[#EF4444]">
-              Feito para casais apaixonados
+              Surpreenda no aniversário de namoro
             </span>
           </div>
 
           <h1 className="text-3xl font-bold leading-[1.1] tracking-tight text-[#FAFAFA] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
-            A História de <span className="text-[#EF4444]">Vocês</span> em uma
-            Linha do Tempo
+            A História de Amor de <span className="text-[#EF4444]">Vocês</span>{" "}
+            em uma Retrospectiva Inesquecível
           </h1>
 
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[#A1A1AA] sm:mt-6 sm:text-lg lg:text-xl">
@@ -71,7 +71,7 @@ export function Hero() {
 
           <p className="mt-3 text-xs text-[#52525B] sm:mt-4 sm:text-sm">
             {
-              "Sem cartão de crédito • Garanta a promoção de lançamento (R$ 39,90)"
+              "Sem cartão de crédito • Garanta o presente com preço de lançamento (R$ 39,90)"
             }
           </p>
         </div>
@@ -98,26 +98,26 @@ export function Hero() {
               {[
                 {
                   icon: Heart,
-                  title: "Primeiro encontro",
-                  date: "Jan 2022",
+                  title: "Começo da nossa história",
+                  date: "Fev 2022",
                   color: "#EF4444",
                 },
                 {
                   icon: Calendar,
-                  title: "Primeira viagem juntos",
-                  date: "Mar 2022",
+                  title: "Capítulo: nossa primeira viagem",
+                  date: "Jul 2022",
                   color: "#DC2626",
                 },
                 {
                   icon: ImageIcon,
-                  title: "Nosso aniversário",
-                  date: "Jul 2022",
+                  title: "Carta final",
+                  date: "Mai 2024",
                   color: "#EF4444",
                 },
                 {
                   icon: Share2,
-                  title: "Mudamos juntos",
-                  date: "Dez 2022",
+                  title: "Revelação no aniversário",
+                  date: "Jun 2024",
                   color: "#DC2626",
                 },
               ].map((item, i) => (

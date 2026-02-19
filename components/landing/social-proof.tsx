@@ -6,31 +6,31 @@ import { Star, Users, Heart, BarChart3 } from "lucide-react";
 import { landingCopy } from "@/lib/landing-copy";
 
 const stats = [
-  { icon: Users, value: "500+", label: "Casais Usando" },
-  { icon: Heart, value: "2.500+", label: "Momentos Registrados" },
-  { icon: BarChart3, value: "4.8", label: "Avaliação Média", suffix: "★" },
+  { icon: Users, value: "500+", label: "Casais surpreendidos" },
+  { icon: Heart, value: "2.500+", label: "Retrospectivas criadas" },
+  { icon: BarChart3, value: "4.8", label: "Avaliação média", suffix: "★" },
 ];
 
 const testimonials = [
   {
     quote:
-      "A NossaHistória transformou a forma como lembramos nossos momentos. É lindo ver tudo organizado em uma timeline!",
+      "O roteiro guiado nos ajudou a transformar memórias em capítulos. A revelação no aniversário foi perfeita.",
     name: "Ana & Pedro",
-    status: "Juntos há 3 anos",
+    status: "Juntos há 4 anos",
     rating: 5,
   },
   {
     quote:
-      "Usei para montar nossa história e mostrar no casamento. Os convidados amaram! Super fácil de usar.",
+      "Usei o modo surpresa com QR Code e minha namorada se emocionou no aniversário. Tudo ficou lindo!",
     name: "Mariana & Lucas",
-    status: "Casados há 1 ano",
+    status: "Namorando há 3 anos",
     rating: 5,
   },
   {
     quote:
-      "Presente perfeito para o Dia dos Namorados. Minha namorada chorou de emoção quando viu a timeline que fiz.",
-    name: "Rafael & Julia",
-    status: "Namorando há 2 anos",
+      "Montar a retrospectiva foi rápido e o link secreto deixou a entrega especial. Recomendo demais.",
+    name: "Rafael & Júlia",
+    status: "Juntos há 2 anos",
     rating: 5,
   },
 ];

@@ -1,10 +1,9 @@
 export const landingCopy = {
   brandName: "NossaHistória",
-  primaryCtaLabel: "Criar minha timeline",
+  primaryCtaLabel: "Criar minha retrospectiva",
   secondaryCtaLabel: "Ver planos",
   valueProposition:
-    "Crie e compartilhe a história do casal em minutos, com privacidade e visual premium.",
+    "Em poucos minutos você cria uma experiência digital única, cheia de memórias e amor, pronta para surpreender no dia do aniversário.",
   metricsUpdatedAt: "fevereiro de 2026",
   checkoutAnchor: "#checkout",
 } as const;
-
