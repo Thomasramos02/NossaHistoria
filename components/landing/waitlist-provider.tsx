@@ -8,13 +8,20 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { WaitlistModal } from "@/components/landing/waitlist-modal";
+import dynamic from "next/dynamic";
 
 type WaitlistContextValue = {
   openWaitlist: () => void;
 };
 
 const WaitlistContext = createContext<WaitlistContextValue | null>(null);
+const WaitlistModal = dynamic(
+  () =>
+    import("@/components/landing/waitlist-modal").then(
+      (mod) => mod.WaitlistModal,
+    ),
+  { ssr: false },
+);
 
 export function WaitlistProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -32,7 +39,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
   return (
     <WaitlistContext.Provider value={value}>
       {children}
-      <WaitlistModal open={open} onClose={closeWaitlist} />
+      {open ? <WaitlistModal open={open} onClose={closeWaitlist} /> : null}
     </WaitlistContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { useReward } from "partycles";
+import { WaitlistSuccessReward } from "@/components/landing/waitlist-success-reward";
 
 type WaitlistModalProps = {
   open: boolean;
@@ -12,25 +12,14 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
   const [leadEmail, setLeadEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [leadCaptured, setLeadCaptured] = useState(false);
-
-  const [rewardFired, setRewardFired] = useState(false);
-  // Adicione esse:
-  const { reward: submitReward } = useReward("submit-btn", "hearts", {
-    particleCount: 20,
-    spread: 80,
-    elementSize: 20,
-    startVelocity: 20,
-    lifetime: 200,
-    decay: 0.92,
-    effects: { pulse: true },
-  });
+  const [showReward, setShowReward] = useState(false);
 
   useEffect(() => {
     if (!open) {
       setLeadEmail("");
       setEmailError("");
       setLeadCaptured(false);
-      setRewardFired(false);
+      setShowReward(false);
     }
   }, [open]);
 
@@ -59,16 +48,12 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
         setEmailError("Não foi possível salvar. Tente novamente.");
         return;
       }
+
       setEmailError("");
-      if (!rewardFired) {
-        submitReward();
-        setRewardFired(true);
-        setTimeout(() => {
-          (setLeadCaptured(true), 800);
-        });
-      } else {
+      setShowReward(true);
+      setTimeout(() => {
         setLeadCaptured(true);
-      }
+      }, 800);
     } catch {
       setEmailError("Não foi possível salvar. Tente novamente.");
     }
@@ -83,9 +68,11 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
       aria-modal="true"
       aria-labelledby="waitlist-title"
     >
-      <div className="w-full max-w-md rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[#1A1A1A] p-6 shadow-2xl">
+      <div className="relative w-full max-w-md rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[#1A1A1A] p-6 shadow-2xl">
+        {showReward && !leadCaptured ? <WaitlistSuccessReward /> : null}
+
         <h3 id="waitlist-title" className="text-xl font-bold text-[#FAFAFA]">
-          🎉 Estamos quase lá!
+          Estamos quase lá!
         </h3>
         <p className="mt-2 text-sm text-[#A1A1AA]">
           A retrospectiva digital está em preparação final. Deixe seu e-mail
@@ -95,7 +82,7 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
         {leadCaptured ? (
           <div id="waitlist-success" className="mt-4 space-y-2">
             <p className="rounded-lg border border-green-500/30 bg-green-500/10 px-3 py-2 text-sm text-green-300">
-              ✅ Cadastro realizado com sucesso!
+              Cadastro realizado com sucesso!
             </p>
             <p className="text-xs text-[#A1A1AA]">
               Você receberá um email assim que a retrospectiva estiver
@@ -123,7 +110,9 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
               autoComplete="email"
               required
             />
-            {emailError && <p className="text-xs text-red-400">{emailError}</p>}
+            {emailError ? (
+              <p className="text-xs text-red-400">{emailError}</p>
+            ) : null}
 
             <button
               id="submit-btn"
@@ -134,7 +123,7 @@ export function WaitlistModal({ open, onClose }: WaitlistModalProps) {
             </button>
 
             <p className="text-center text-xs text-[#71717A]">
-              💝 Oferta especial de lançamento: R$ 39,90 (ao invés de R$ 49,90)
+              Oferta especial de lançamento: R$ 12,90 (ao invés de R$ 24,90)
             </p>
           </form>
         )}

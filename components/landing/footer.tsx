@@ -1,5 +1,3 @@
-"use client";
-
 import {
   ArrowUpRight,
   Heart,
@@ -69,9 +67,6 @@ export function Footer() {
                   aria-disabled={
                     isPlaceholderLink(social.href) ? "true" : undefined
                   }
-                  onClick={(event) => {
-                    if (isPlaceholderLink(social.href)) event.preventDefault();
-                  }}
                   className={`flex h-9 w-9 items-center justify-center rounded-lg border border-[rgba(255,255,255,0.08)] bg-[#262626] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] ${
                     isPlaceholderLink(social.href)
                       ? "cursor-not-allowed text-[#6B7280]"
@@ -114,9 +109,6 @@ export function Footer() {
                     aria-disabled={
                       isPlaceholderLink(link.href) ? "true" : undefined
                     }
-                    onClick={(event) => {
-                      if (isPlaceholderLink(link.href)) event.preventDefault();
-                    }}
                     className={`inline-flex items-center gap-2 rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] ${
                       isPlaceholderLink(link.href)
                         ? "cursor-not-allowed text-[#6B7280]"
@@ -147,9 +139,6 @@ export function Footer() {
                     aria-disabled={
                       isPlaceholderLink(link.href) ? "true" : undefined
                     }
-                    onClick={(event) => {
-                      if (isPlaceholderLink(link.href)) event.preventDefault();
-                    }}
                     className={`inline-flex items-center gap-2 rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF4444] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1A1A] ${
                       isPlaceholderLink(link.href)
                         ? "cursor-not-allowed text-[#6B7280]"

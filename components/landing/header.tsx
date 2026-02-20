@@ -18,22 +18,35 @@ export function Header() {
   const { openWaitlist } = useWaitlist();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let raf = 0;
+    const handleScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        raf = 0;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0F0F0F]/90 backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)]"
-          : "bg-transparent backdrop-blur-sm border-b border-[rgba(255,255,255,0.04)]"
+          ? "border-b border-[rgba(255,255,255,0.06)] bg-[#0F0F0F]/90 md:backdrop-blur-xl"
+          : "border-b border-[rgba(255,255,255,0.04)] bg-transparent md:backdrop-blur-sm"
       }`}
     >
       {/* red ambient glows */}
-      <div className="pointer-events-none absolute -left-16 top-[-48px] h-44 w-44 rounded-full bg-[#EF4444]/12 blur-[90px]" />
-      <div className="pointer-events-none absolute right-8 bottom-[-52px] h-48 w-48 rounded-full bg-[#EF4444]/10 blur-[110px]" />
+      <div className="pointer-events-none absolute -left-16 top-[-48px] h-28 w-28 rounded-full bg-[#EF4444]/12 blur-[34px] sm:h-44 sm:w-44 sm:blur-[90px]" />
+      <div className="pointer-events-none absolute right-8 bottom-[-52px] hidden h-48 w-48 rounded-full bg-[#EF4444]/10 blur-[110px] sm:block" />
 
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-6">
         {/* Logo */}
@@ -89,7 +102,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="absolute left-0 right-0 top-20 border-b border-[rgba(255,255,255,0.06)] bg-[#0F0F0F]/95 backdrop-blur-xl md:hidden">
+        <div className="absolute left-0 right-0 top-20 border-b border-[rgba(255,255,255,0.06)] bg-[#0F0F0F]/95 md:backdrop-blur-xl md:hidden">
           <nav
             className="flex flex-col gap-1 px-6 py-4"
             aria-label="Navegação mobile"
